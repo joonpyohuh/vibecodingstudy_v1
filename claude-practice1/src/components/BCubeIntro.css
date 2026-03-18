@@ -1,0 +1,191 @@
+/* ══════════════════════════════════════
+   BCubeIntro — 스플래시 인트로 애니메이션
+   ══════════════════════════════════════ */
+
+/* ── 오버레이 ───────────────────── */
+.intro-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #080D24;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro-wrap--out {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* ── 배경 ───────────────────────── */
+.intro-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0, 200, 90, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 30% 70%, rgba(108, 99, 255, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── 스테이지 ───────────────────── */
+.intro-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── 큐브 래퍼 ─────────────────── */
+.intro-cube-wrap {
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.intro-svg {
+  display: block;
+  filter: drop-shadow(0 0 32px rgba(0, 200, 90, 0.15));
+}
+
+/* 배경 rect 팝인 */
+.intro-rect {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: rect-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+}
+
+@keyframes rect-pop {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* 면별 애니메이션 */
+.intro-face { opacity: 0; }
+
+.intro-face--top {
+  transform-box: fill-box;
+  transform-origin: 50% 0%;
+  animation: face-drop 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.45s both;
+}
+
+.intro-face--left {
+  transform-box: fill-box;
+  transform-origin: 0% 50%;
+  animation: face-left 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.82s both;
+}
+
+.intro-face--right {
+  transform-box: fill-box;
+  transform-origin: 100% 50%;
+  animation: face-right 0.5s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both;
+}
+
+.intro-face--dot {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: face-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.45s both;
+}
+
+@keyframes face-drop {
+  from { opacity: 0; transform: translateY(-18px) scaleY(0.6); }
+  to   { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+@keyframes face-left {
+  from { opacity: 0; transform: translateX(-18px) scaleX(0.6); }
+  to   { opacity: 1; transform: translateX(0) scaleX(1); }
+}
+
+@keyframes face-right {
+  from { opacity: 0; transform: translateX(18px) scaleX(0.6); }
+  to   { opacity: 1; transform: translateX(0) scaleX(1); }
+}
+
+@keyframes face-pop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* 큐브 글로우 */
+.intro-glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0, 200, 90, 0.3) 0%, transparent 70%);
+  animation: glow-pulse 2s ease-in-out infinite;
+  opacity: 0;
+  animation-delay: 1.6s;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.4; transform: translateX(-50%) scaleX(1); }
+  50%       { opacity: 0.8; transform: translateX(-50%) scaleX(1.2); }
+}
+
+/* ── 텍스트 ─────────────────────── */
+.intro-text-wrap {
+  text-align: center;
+  margin-bottom: 32px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.65s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1.65s;
+}
+
+.intro-text-wrap--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: -3px;
+  line-height: 1;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #ffffff 0%, #a5f3c0 40%, #6ee7a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.intro-sub {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.38);
+  letter-spacing: 0.2px;
+}
+
+/* ── 로딩 바 ────────────────────── */
+.intro-bar-wrap {
+  width: 160px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease 1.9s;
+}
+
+.intro-bar-wrap--in {
+  opacity: 1;
+}
+
+.intro-bar {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #00C85A, #6ee7a8);
+  animation: bar-fill 0.8s cubic-bezier(0.4, 0, 0.2, 1) 2.0s both;
+}
+
+@keyframes bar-fill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}

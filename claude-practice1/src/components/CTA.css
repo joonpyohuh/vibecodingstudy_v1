@@ -1,0 +1,126 @@
+/* CTA — 유일하게 다크 배경 유지 (Apple 프로모 섹션처럼) */
+.cta-section {
+  padding: 120px 0;
+  background: #0a0a1f;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(58,58,255,0.5), transparent);
+}
+
+.cta-bg { position: absolute; inset: 0; pointer-events: none; }
+
+.cta-glow-1 {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(58,58,255,0.12) 0%, transparent 70%);
+  top: -200px; left: -100px; animation: float 8s ease-in-out infinite;
+}
+
+.cta-glow-2 {
+  position: absolute; width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,59,107,0.08) 0%, transparent 70%);
+  bottom: -150px; right: -100px; animation: float 6s ease-in-out infinite 3s;
+}
+
+.floating-emoji {
+  position: absolute; top: 20%; opacity: 0.12;
+  animation: float ease-in-out infinite; user-select: none;
+}
+
+.cta-content { max-width: 680px; margin: 0 auto; }
+
+.cta-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(58,58,255,0.12);
+  border: 1px solid rgba(58,58,255,0.25);
+  border-radius: 100px; padding: 9px 22px;
+  font-size: 13px; font-weight: 600; color: #a5b4fc;
+  margin-bottom: 30px;
+}
+
+.badge-pulse {
+  width: 8px; height: 8px;
+  background: #00c060; border-radius: 50%;
+  animation: pulse-ring 1.8s ease-in-out infinite;
+}
+
+.cta-title {
+  font-size: clamp(30px, 5vw, 58px);
+  font-weight: 900; letter-spacing: -2px; line-height: 1.15;
+  margin-bottom: 22px; color: #f8f8ff;
+}
+
+.cta-desc {
+  font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.8;
+  margin-bottom: 40px; letter-spacing: -0.1px;
+}
+
+/* 팀 프로젝트 하이라이트 */
+.cta-team-highlight {
+  display: flex; align-items: center; gap: 20px;
+  background: rgba(0,192,96,0.08);
+  border: 1px solid rgba(0,192,96,0.22);
+  border-radius: 18px; padding: 18px 24px; margin-bottom: 28px;
+  max-width: 500px; margin-left: auto; margin-right: auto;
+  position: relative; overflow: hidden;
+}
+.cta-team-highlight::before {
+  content: ''; position: absolute; inset: 0 0 auto; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,192,96,0.5), transparent);
+}
+.cta-team-week { display: flex; flex-direction: column; align-items: center; gap: 4px; flex-shrink: 0; min-width: 56px; }
+.cta-team-week-label { font-size: 22px; font-weight: 900; color: #00c060; letter-spacing: -1px; font-family: 'Space Grotesk',sans-serif; line-height: 1; }
+.cta-team-week-tag { font-size: 9px; font-weight: 800; letter-spacing: 1.2px; color: #00c060; background: rgba(0,192,96,0.15); border: 1px solid rgba(0,192,96,0.3); border-radius: 4px; padding: 2px 6px; }
+.cta-team-info { display: flex; flex-direction: column; gap: 4px; text-align: left; border-left: 1px solid rgba(0,192,96,0.2); padding-left: 20px; }
+.cta-team-title { font-size: 16px; font-weight: 800; color: #e8f8f0; letter-spacing: -0.4px; }
+.cta-team-desc { font-size: 13px; color: rgba(255,255,255,0.45); letter-spacing: -0.1px; }
+
+.cta-checklist {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  margin-bottom: 44px; text-align: left;
+  max-width: 480px; margin-left: auto; margin-right: auto;
+}
+
+.check-item {
+  font-size: 14px; color: rgba(255,255,255,0.8);
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+.check-item:hover { background: rgba(58,58,255,0.1); border-color: rgba(58,58,255,0.25); }
+
+.cta-actions { display: flex; gap: 14px; justify-content: center; margin-bottom: 0; flex-wrap: wrap; }
+
+.cta-btn-primary {
+  display: flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #3a3aff, #7c3aed);
+  color: white; border: none;
+  padding: 16px 36px; border-radius: 100px;
+  font-size: 16px; font-weight: 700; cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 28px rgba(58,58,255,0.38);
+  font-family: inherit; letter-spacing: -0.2px;
+}
+.cta-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(58,58,255,0.5); }
+
+.btn-arrow { font-size: 18px; transition: transform 0.25s ease; }
+.cta-btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+.cta-btn-secondary {
+  background: transparent; color: rgba(255,255,255,0.7);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  padding: 16px 28px; border-radius: 100px;
+  font-size: 15px; font-weight: 600; cursor: pointer;
+  transition: all 0.22s ease; font-family: inherit;
+}
+.cta-btn-secondary:hover { border-color: rgba(255,255,255,0.35); color: white; }
+
+@media (max-width: 600px) { .cta-checklist { grid-template-columns: 1fr; } }
