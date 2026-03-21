@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss/utilities";
 
 /* ── 변수 ─────────────────────────────────── */
 :root {
@@ -224,3 +225,7 @@ body {
   letter-spacing: -0.2px;
 }
 .section-subtitle strong { color: var(--primary); font-weight: 700; }
+
+/* Tailwind 보조 유틸 */
+.scrollbar-none { scrollbar-width: none; }
+.scrollbar-none::-webkit-scrollbar { display: none; }
