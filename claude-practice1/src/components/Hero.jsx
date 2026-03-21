@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import BCubeLogo from './BCubeLogo';
 import ajouLogo from '../assets/ajou-logo.png';
 import './Hero.css';
 
@@ -66,15 +65,6 @@ export default function Hero() {
         <div className="hero-ajou-row animate-bounce-in">
           <img src={ajouLogo} alt="아주대학교" className="hero-ajou-logo" />
           <span className="hero-ajou-label">아주대학교 경영인텔리전스학과 B-CUBE</span>
-        </div>
-
-        {/* B-CUBE 로고 + 배지 */}
-        <div className="hero-bcube-row animate-bounce-in delay-2">
-          <BCubeLogo size={36} />
-          <div className="hero-badge">
-            <span className="badge-dot" />
-            B-CUBE · 바이브코딩 스터디 2025
-          </div>
         </div>
 
         <h1 className="hero-title animate-fade-up delay-2">

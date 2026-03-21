@@ -349,15 +349,20 @@
 }
 
 @media (max-width: 900px) {
-  .hero { flex-direction: column; text-align: center; gap: 40px; }
-  .hero-bcube-row { margin: 0 auto 28px; }
+  .hero { flex-direction: column; text-align: center; gap: 40px; padding: 100px 20px 60px; }
+  .hero-ajou-row { margin: 0 auto 16px; }
   .hero-actions  { justify-content: center; }
   .hero-stats    { justify-content: center; }
   .hero-terminal { max-width: 100%; width: 100%; }
 }
 @media (max-width: 600px) {
-  .hero-section { padding: 100px 20px 60px; }
-  .hero-actions { flex-direction: column; gap: 10px; }
-  .hero-btn-primary, .hero-btn-secondary { width: 100%; justify-content: center; }
+  .hero { padding: 90px 16px 60px; gap: 32px; }
+  .hero-ajou-row { margin: 0 auto 16px; }
+  .hero-title { font-size: clamp(32px, 8vw, 48px); letter-spacing: -1.5px; }
+  .hero-desc { font-size: 15px; }
+  .hero-actions { flex-direction: column; gap: 10px; align-items: stretch; }
+  .btn-primary, .btn-secondary { width: 100%; text-align: center; }
   .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
+  .hero-team-card { flex-wrap: wrap; }
+  .hero-team-card__badge { position: static; transform: none; margin-top: 8px; }
 }
