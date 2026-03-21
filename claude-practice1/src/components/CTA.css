@@ -123,4 +123,28 @@
 }
 .cta-btn-secondary:hover { border-color: rgba(255,255,255,0.35); color: white; }
 
-@media (max-width: 600px) { .cta-checklist { grid-template-columns: 1fr; } }
+@media (max-width: 600px) {
+  .cta-section { padding: 80px 0; }
+  .cta-checklist { grid-template-columns: 1fr; }
+  .cta-title { font-size: clamp(26px, 8vw, 40px); letter-spacing: -1px; }
+  .cta-desc { font-size: 15px; }
+  .cta-team-highlight {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+    padding: 20px 18px;
+  }
+  .cta-team-info {
+    border-left: none;
+    border-top: 1px solid rgba(0,192,96,0.2);
+    padding-left: 0;
+    padding-top: 14px;
+    text-align: center;
+  }
+  .cta-btn-primary, .cta-btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+  }
+  .cta-actions { flex-direction: column; gap: 10px; }
+}

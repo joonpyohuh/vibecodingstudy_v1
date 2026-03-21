@@ -249,13 +249,25 @@
 /* responsive */
 @media (max-width: 768px) {
   .lp-nav-right { display: none; }
+  .lp-hero { padding: calc(56px + 48px) 20px 64px; }
   .lp-hero-nums { gap: 28px; }
+  .lp-hero-sub { font-size: 16px; }
   .tc-grid { grid-template-columns: 1fr; }
   .gc-compare { grid-template-columns: 1fr; gap: 12px; }
   .gc-vs { padding: 4px 0; }
+  .gc-col { padding: 20px 18px; }
   .demo-gui-body { flex-direction: column; }
   .demo-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); }
+  .lp-tools, .gc-section, .lp-fcta { padding: 72px 0; }
+  .lp-made { flex-direction: column; text-align: center; gap: 10px; }
 }
 @media (max-width: 480px) {
   .lp-nav-center { display: none; }
+  .lp-hero-nums { gap: 20px; }
+  .lp-num-n { font-size: 32px; }
+  .tc { padding: 20px 18px 18px; }
+  .gc-tab { padding: 9px 16px; font-size: 13px; }
+  .lp-fcta-btn { width: 100%; padding: 15px 20px; }
+  .demo-cli-body { padding: 14px 16px; }
+  .cli-row { font-size: 12px; }
 }

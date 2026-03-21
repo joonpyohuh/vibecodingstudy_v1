@@ -13,7 +13,7 @@
 .quote-text strong { color: var(--primary); font-style: normal; font-weight: 700; }
 .quote-author { margin-top: 20px; font-size: 13px; color: var(--text-muted); font-weight: 600; }
 
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 16px; margin-bottom: 72px; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px,100%),1fr)); gap: 16px; margin-bottom: 72px; }
 
 .feature-card {
   padding: 32px; background: var(--bg-card); border: 1px solid var(--border);
@@ -42,3 +42,10 @@
 .tool-icon { font-size:22px; }
 .tool-name { font-size:14px;font-weight:700;color:var(--text); }
 .tool-category { font-size:11px;color:var(--text-muted);margin-top:1px; }
+
+@media (max-width: 600px) {
+  .what-section { padding: 72px 0; }
+  .quote-block { padding: 28px 24px; margin-bottom: 48px; }
+  .quote-text { font-size: 16px; }
+  .feature-card { padding: 22px; }
+}

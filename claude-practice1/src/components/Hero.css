@@ -329,3 +329,9 @@
   .hero-stats    { justify-content: center; }
   .hero-terminal { max-width: 100%; width: 100%; }
 }
+@media (max-width: 600px) {
+  .hero-section { padding: 100px 20px 60px; }
+  .hero-actions { flex-direction: column; gap: 10px; }
+  .hero-btn-primary, .hero-btn-secondary { width: 100%; justify-content: center; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; justify-content: center; }
+}

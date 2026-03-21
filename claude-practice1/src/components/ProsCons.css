@@ -65,3 +65,9 @@
   .procons-grid { grid-template-columns: 1fr; }
   .verdict-box { flex-direction: column; text-align: center; }
 }
+@media (max-width: 600px) {
+  .procons-section { padding: 72px 0; }
+  .verdict-box { padding: 24px 20px; }
+  .switcher-btn { padding: 8px 16px; font-size: 13px; }
+  .item-card { padding: 14px 16px; }
+}
