@@ -6,8 +6,8 @@ export default function BCubeIntro({ onDone }) {
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('show'), 100);
-    const t2 = setTimeout(() => setPhase('out'), 2700);
-    const t3 = setTimeout(onDone, 3300);
+    const t2 = setTimeout(() => setPhase('out'), 4500);
+    const t3 = setTimeout(onDone, 5200);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   }, [onDone]);
 

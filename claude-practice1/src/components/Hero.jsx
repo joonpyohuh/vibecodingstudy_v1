@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import BCubeLogo from './BCubeLogo';
+import ajouLogo from '../assets/ajou-logo.png';
 import './Hero.css';
 
 const particles = Array.from({ length: 30 }, (_, i) => ({
@@ -61,8 +62,14 @@ export default function Hero() {
       <div className="orb orb-3" />
 
       <div className="hero-content">
+        {/* 아주대 로고 배지 */}
+        <div className="hero-ajou-row animate-bounce-in">
+          <img src={ajouLogo} alt="아주대학교" className="hero-ajou-logo" />
+          <span className="hero-ajou-label">아주대학교 경영인텔리전스학과 B-CUBE</span>
+        </div>
+
         {/* B-CUBE 로고 + 배지 */}
-        <div className="hero-bcube-row animate-bounce-in">
+        <div className="hero-bcube-row animate-bounce-in delay-2">
           <BCubeLogo size={36} />
           <div className="hero-badge">
             <span className="badge-dot" />

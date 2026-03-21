@@ -33,6 +33,94 @@ function useTyping(text, speed = 50) {
 }
 
 /* ── data ───────────────────────────────────────────── */
+
+const CONCEPTS = [
+  {
+    icon: '💬',
+    title: '자연어 프로그래밍',
+    desc: '코드 문법 대신 "로그인 버튼 만들어줘"처럼 말로 설명합니다. AI가 코드로 번역해줍니다.',
+    color: '#3182F6',
+  },
+  {
+    icon: '🤝',
+    title: 'AI와 협업',
+    desc: 'AI가 초안을 만들고, 사람이 방향을 결정합니다. 개발자가 아니어도 제품을 만들 수 있습니다.',
+    color: '#00C060',
+  },
+  {
+    icon: '🔁',
+    title: '반복 개선 (Iteration)',
+    desc: '"이 버튼 파란색으로 바꿔줘", "글씨 더 크게" — 결과를 보며 계속 수정 요청합니다.',
+    color: '#F59E0B',
+  },
+  {
+    icon: '🚀',
+    title: '즉시 배포',
+    desc: 'Vercel, Netlify 같은 플랫폼으로 완성 즉시 전 세계에 서비스를 공개할 수 있습니다.',
+    color: '#EF4444',
+  },
+];
+
+const STEPS = [
+  {
+    num: '01',
+    title: '아이디어 정리',
+    desc: '만들고 싶은 것을 구체적으로 생각해보세요. "어떤 문제를 해결하고 싶은가?"',
+    tip: '"아주대 공지를 자동으로 요약해주는 사이트를 만들자"',
+    color: '#3182F6',
+  },
+  {
+    num: '02',
+    title: 'AI 도구 선택',
+    desc: '처음이라면 Cursor(GUI)를, 익숙해지면 Claude Code(CLI)를 추천합니다.',
+    tip: '초보자 → Cursor  |  중급자 → Claude Code',
+    color: '#8B5CF6',
+  },
+  {
+    num: '03',
+    title: '프롬프트 작성',
+    desc: '원하는 결과물을 자연어로 구체적으로 설명합니다. 구체적일수록 결과가 좋아집니다.',
+    tip: '"React로 공지사항 카드 목록 컴포넌트 만들어줘. 제목, 날짜, 카테고리 뱃지 포함."',
+    color: '#00C060',
+  },
+  {
+    num: '04',
+    title: '결과 확인',
+    desc: 'AI가 생성한 코드와 UI를 확인합니다. 완벽하지 않아도 괜찮습니다.',
+    tip: '전체 코드를 이해하려 하지 말고, 결과물이 원하는 방향인지만 확인하세요',
+    color: '#F59E0B',
+  },
+  {
+    num: '05',
+    title: '수정 요청 반복',
+    desc: '마음에 안 드는 부분을 말로 수정 요청합니다. 이 과정을 반복합니다.',
+    tip: '"버튼 색을 파란색으로, 글씨는 더 굵게, 모바일에서도 잘 보이게 해줘"',
+    color: '#EF4444',
+  },
+  {
+    num: '06',
+    title: '배포',
+    desc: 'GitHub에 푸시하고 Vercel을 연결하면 자동으로 전 세계에 배포됩니다.',
+    tip: 'git push 한 번으로 실제 서비스가 업데이트됩니다',
+    color: '#EC4899',
+  },
+];
+
+const PROMPT_EXAMPLES = [
+  {
+    type: 'bad',
+    label: '❌ 나쁜 프롬프트',
+    text: '"앱 만들어줘"',
+    reason: '너무 모호함. AI가 무엇을 만들어야 할지 알 수 없음.',
+  },
+  {
+    type: 'good',
+    label: '✅ 좋은 프롬프트',
+    text: '"아주대학교 공지사항을 카드 형태로 보여주는 React 컴포넌트를 만들어줘. 제목, 날짜, 카테고리 뱃지를 포함하고, 검색 기능도 추가해줘. Toss 스타일로 깔끔하게."',
+    reason: '목적, 기술스택, 디자인 방향이 모두 명확함.',
+  },
+];
+
 const TOOLS = [
   {
     id: 'cursor',
@@ -89,6 +177,93 @@ const CLI_LINES = [
   { text: '✓ App.jsx 라우팅 추가', type: 'ok', delay: 2400 },
   { text: '$ _', type: 'cmd', delay: 3000 },
 ];
+
+/* ── BasicSection ────────────────────────────────────── */
+function BasicSection() {
+  const [ref, inView] = useInView(0.08);
+  return (
+    <section className="lp-basic" ref={ref}>
+      <div className="section-container">
+
+        {/* 바이브코딩이란? */}
+        <div className={`lp-section-head ${inView ? 'animate-fade-up' : ''}`}>
+          <div className="lp-eyebrow">WHAT IS VIBE CODING</div>
+          <h2 className="lp-h2">바이브코딩이란?</h2>
+          <p className="lp-lead">
+            2025년 Andrej Karpathy가 제안한 개념.<br />
+            <strong>코드를 직접 짜는 대신, AI에게 말로 설명하여 소프트웨어를 만드는 방식</strong>입니다.
+          </p>
+        </div>
+
+        {/* 개념 카드 4개 */}
+        <div className="lp-concept-grid">
+          {CONCEPTS.map((c, i) => (
+            <div
+              key={i}
+              className={`lp-concept-card ${inView ? 'animate-fade-up' : ''}`}
+              style={{ animationDelay: `${0.1 * i}s` }}
+            >
+              <div className="lp-concept-icon" style={{ background: `${c.color}18` }}>
+                {c.icon}
+              </div>
+              <h3 className="lp-concept-title" style={{ color: c.color }}>{c.title}</h3>
+              <p className="lp-concept-desc">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* 바이브코딩 하는 법 */}
+        <div className={`lp-section-head lp-section-head--mt ${inView ? 'animate-fade-up' : ''}`}>
+          <div className="lp-eyebrow">HOW TO VIBE CODE</div>
+          <h2 className="lp-h2">바이브코딩 하는 법</h2>
+          <p className="lp-lead">6단계로 아이디어를 실제 서비스로 만들어보세요.</p>
+        </div>
+
+        {/* 스텝 카드 */}
+        <div className="lp-steps">
+          {STEPS.map((s, i) => (
+            <div
+              key={i}
+              className={`lp-step ${inView ? 'animate-fade-up' : ''}`}
+              style={{ animationDelay: `${0.08 * i}s` }}
+            >
+              <div className="lp-step-num" style={{ color: s.color, borderColor: `${s.color}30`, background: `${s.color}0d` }}>
+                {s.num}
+              </div>
+              <div className="lp-step-body">
+                <h4 className="lp-step-title">{s.title}</h4>
+                <p className="lp-step-desc">{s.desc}</p>
+                <div className="lp-step-tip">
+                  <span className="lp-step-tip-label">예시</span>
+                  {s.tip}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 프롬프트 작성법 */}
+        <div className={`lp-section-head lp-section-head--mt ${inView ? 'animate-fade-up' : ''}`}>
+          <div className="lp-eyebrow">PROMPT BASICS</div>
+          <h2 className="lp-h2">프롬프트 잘 쓰는 법</h2>
+          <p className="lp-lead">구체적일수록 AI의 결과물이 좋아집니다.</p>
+        </div>
+
+        <div className="lp-prompt-compare">
+          {PROMPT_EXAMPLES.map((ex, i) => (
+            <div key={i} className={`lp-prompt-card lp-prompt-card--${ex.type} ${inView ? 'animate-fade-up' : ''}`}
+              style={{ animationDelay: `${0.15 * i}s` }}>
+              <div className="lp-prompt-label">{ex.label}</div>
+              <div className="lp-prompt-text">{ex.text}</div>
+              <div className="lp-prompt-reason">{ex.reason}</div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}
 
 /* ── ToolCard ────────────────────────────────────────── */
 function ToolCard({ tool, idx }) {
@@ -300,6 +475,9 @@ export default function LearningPage({ onBack }) {
           </div>
         </div>
       </header>
+
+      {/* 바이브코딩 기초 */}
+      <BasicSection />
 
       {/* tools */}
       <section className="lp-tools">

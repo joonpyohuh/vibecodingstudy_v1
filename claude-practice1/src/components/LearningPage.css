@@ -92,6 +92,156 @@
 .lp-made-t { font-size: 15px; font-weight: 700; color: #9d174d; margin-bottom: 4px; letter-spacing: -0.3px; }
 .lp-made-s { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
 
+/* ── 바이브코딩 기초 섹션 ────────────────────── */
+.lp-basic { padding: 110px 0; background: var(--bg); }
+
+.lp-section-head--mt { margin-top: 88px; }
+
+/* 개념 카드 그리드 */
+.lp-concept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.lp-concept-card {
+  padding: 28px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.lp-concept-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+
+.lp-concept-icon {
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.lp-concept-title {
+  font-size: 16px; font-weight: 800;
+  margin-bottom: 8px; letter-spacing: -0.4px;
+}
+
+.lp-concept-desc {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* 스텝 카드 */
+.lp-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lp-step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 22px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+.lp-step:hover { transform: translateX(6px); box-shadow: var(--shadow-sm); }
+
+.lp-step-num {
+  flex-shrink: 0;
+  font-size: 22px; font-weight: 900;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -1px;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  border: 1.5px solid;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.lp-step-body { flex: 1; }
+
+.lp-step-title {
+  font-size: 16px; font-weight: 800;
+  color: var(--text); margin-bottom: 6px; letter-spacing: -0.4px;
+}
+
+.lp-step-desc {
+  font-size: 14px; color: var(--text-muted);
+  line-height: 1.65; margin-bottom: 10px;
+}
+
+.lp-step-tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  background: var(--bg-alt);
+  border-radius: 10px;
+  padding: 8px 12px;
+  line-height: 1.55;
+}
+
+.lp-step-tip-label {
+  flex-shrink: 0;
+  font-size: 10px; font-weight: 800;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  color: var(--primary);
+  background: rgba(58,58,255,0.08);
+  border-radius: 5px;
+  padding: 2px 6px;
+  margin-top: 1px;
+}
+
+/* 프롬프트 비교 */
+.lp-prompt-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.lp-prompt-card {
+  padding: 24px 22px;
+  border-radius: 18px;
+  border: 1.5px solid;
+}
+
+.lp-prompt-card--bad {
+  background: #fff5f5;
+  border-color: rgba(255,59,107,0.2);
+}
+
+.lp-prompt-card--good {
+  background: #f0fdf4;
+  border-color: rgba(0,192,96,0.2);
+}
+
+.lp-prompt-label {
+  font-size: 12px; font-weight: 800;
+  margin-bottom: 12px;
+  letter-spacing: -0.2px;
+}
+
+.lp-prompt-text {
+  font-size: 13.5px; font-family: 'Courier New', monospace;
+  line-height: 1.65; color: var(--text);
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.04);
+}
+
+.lp-prompt-reason {
+  font-size: 12.5px; color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* tools */
 .lp-tools { padding: 110px 0; background: var(--bg-alt); }
 
@@ -100,6 +250,14 @@
 .lp-h2 { font-size: clamp(28px,4vw,44px); font-weight: 800; letter-spacing: -1.5px; color: var(--text); }
 .lp-muted { color: var(--text-muted); }
 .lp-lead { font-size: 16px; color: var(--text-muted); margin-top: 12px; line-height: 1.7; letter-spacing: -0.2px; }
+
+/* 반응형 추가 */
+@media (max-width: 640px) {
+  .lp-concept-grid { grid-template-columns: 1fr; }
+  .lp-prompt-compare { grid-template-columns: 1fr; }
+  .lp-step { flex-direction: column; gap: 12px; }
+  .lp-step-num { width: 44px; height: 44px; font-size: 18px; }
+}
 
 .tc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
 
