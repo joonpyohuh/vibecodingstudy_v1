@@ -19,6 +19,156 @@ function CategoryBadge({ category }) {
   );
 }
 
+async function fetchSummary(title) {
+  const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
+    },
+    body: JSON.stringify({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content:
+            '당신은 대학교 공지사항을 간결하게 요약해주는 어시스턴트입니다. ' +
+            '공지 제목을 보고 어떤 내용인지 핵심만 2~3문장으로 설명해주세요. ' +
+            '추측이 포함된 경우 "~으로 보입니다" 같은 표현을 사용하세요.',
+        },
+        {
+          role: 'user',
+          content: `아주대학교 공지사항 제목: "${title}"`,
+        },
+      ],
+      max_tokens: 200,
+    }),
+  });
+
+  if (!res.ok) throw new Error(`API 오류: ${res.status}`);
+  const data = await res.json();
+  return data.choices[0].message.content.trim();
+}
+
+function NoticeItem({ notice, index }) {
+  const [summary, setSummary] = useState(null);   // null | string
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const handleSummarize = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (summary) {
+      setOpen(prev => !prev);
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    setOpen(true);
+    try {
+      const text = await fetchSummary(notice.title);
+      setSummary(text);
+    } catch (err) {
+      setError('요약을 불러오지 못했어요. 잠시 후 다시 시도해주세요.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <li
+      className="notice-item"
+      data-scroll
+      data-scroll-delay={String(Math.min(index + 1, 6))}
+    >
+      {/* 메인 링크 행 */}
+      <a
+        href={notice.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="notice-link"
+      >
+        <CategoryBadge category={notice.category} />
+        <p className="notice-title">{notice.title}</p>
+        <div className="notice-meta">
+          <span className="notice-date">{notice.date}</span>
+          <svg className="notice-arrow" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+      </a>
+
+      {/* 구분선 */}
+      <div className="notice-divider" />
+
+      {/* AI 요약 버튼 — 눈에 띄는 그라디언트 */}
+      <div className="notice-ai-row">
+        <button
+          className={`ai-summary-btn ${loading ? 'loading' : ''} ${open && summary ? 'open' : ''}`}
+          onClick={handleSummarize}
+          disabled={loading}
+        >
+          {loading ? (
+            <>
+              <span className="ai-spinner" />
+              <span>AI가 요약하는 중...</span>
+            </>
+          ) : open && summary ? (
+            <>
+              <span className="ai-btn-icon">✨</span>
+              <span>AI 요약 닫기</span>
+            </>
+          ) : (
+            <>
+              <span className="ai-btn-icon">✨</span>
+              <span>AI로 이 공지 요약하기</span>
+            </>
+          )}
+        </button>
+      </div>
+
+      {/* 요약 결과 */}
+      {open && (
+        <div className="summary-box">
+          {loading && (
+            <div className="summary-skeleton">
+              <div className="skeleton-line" style={{ width: '90%' }} />
+              <div className="skeleton-line" style={{ width: '75%' }} />
+              <div className="skeleton-line" style={{ width: '55%' }} />
+            </div>
+          )}
+          {error && <p className="summary-error">⚠️ {error}</p>}
+          {summary && (
+            <>
+              <p className="summary-label">✨ AI 요약</p>
+              <p className="summary-text">{summary}</p>
+            </>
+          )}
+        </div>
+      )}
+    </li>
+  );
+}
+
+function SummaryIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+      <path d="M2 4h12M2 8h8M2 12h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
+function SparkleIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <path d="M8 1v3M8 12v3M1 8h3M12 8h3M3.5 3.5l2 2M10.5 10.5l2 2M10.5 3.5l-2 2M5.5 10.5l-2 2" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+    </svg>
+  );
+}
+
 export default function AjouNotices() {
   const [query, setQuery] = useState('');
 
@@ -44,6 +194,10 @@ export default function AjouNotices() {
           <div className="aside-stat">
             <span className="stat-num">{filtered.length}</span>
             <span className="stat-label">개의 공지</span>
+          </div>
+          <div className="aside-ai-badge">
+            <SparkleIcon />
+            AI 요약 지원
           </div>
           <a
             href="https://www.ajou.ac.kr/kr/ajou/notice.do"
@@ -90,28 +244,7 @@ export default function AjouNotices() {
               </li>
             ) : (
               filtered.map((notice, i) => (
-                <li
-                  key={notice.id}
-                  className="notice-item"
-                  data-scroll
-                  data-scroll-delay={String(Math.min(i + 1, 6))}
-                >
-                  <a
-                    href={notice.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="notice-link"
-                  >
-                    <CategoryBadge category={notice.category} />
-                    <p className="notice-title">{notice.title}</p>
-                    <div className="notice-meta">
-                      <span className="notice-date">{notice.date}</span>
-                      <svg className="notice-arrow" viewBox="0 0 16 16" fill="none">
-                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </div>
-                  </a>
-                </li>
+                <NoticeItem key={notice.id} notice={notice} index={i} />
               ))
             )}
           </ul>
