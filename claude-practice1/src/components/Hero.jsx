@@ -104,7 +104,7 @@ export default function Hero() {
 
         <div className="hero-stats animate-fade-up delay-7">
           {[
-            { num: '9명', label: 'B-CUBE 스터디원' },
+            { num: '6명', label: 'B-CUBE 스터디원' },
             { num: 'W2', label: '팀 프로젝트 시작' },
             { num: '∞', label: '가능성의 확장' },
           ].map((s, i) => (
