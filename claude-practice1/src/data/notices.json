@@ -1,37 +1,72 @@
 [
   {
     "id": 1,
-    "title": "[일자리+센터] [캠리] 서한그룹(현대차 1차벤더)채용설명회 및 상담회(3/25)(재공지)",
-    "category": "취업",
-    "date": "2026-03-20",
-    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=365441"
+    "title": "[학부]2026학년도 1학기 수강포기(수강철회) 안내",
+    "category": "학사",
+    "date": "2026-03-18",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=365303&article.offset=0&articleLimit=10"
   },
   {
     "id": 2,
-    "title": "[교외장학] 2026학년도 1학기 아주대학교 총동문회 동문장학생 선발 공고",
-    "category": "장학",
-    "date": "2026-03-20",
-    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=365427"
+    "title": "[학부] 어학졸업인증(2026년 8월 졸업)을 위한 공인어학 성적 등록 및 제출 안내 (~2026.7.24)",
+    "category": "학사",
+    "date": "2026-03-12",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=364834&article.offset=0&articleLimit=10"
   },
   {
     "id": 3,
-    "title": "[재공지] 입학홍보대사 G.A.i.A. 23기 모집",
-    "category": "기타",
-    "date": "2026-03-18",
-    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=365273"
+    "title": "[학부] 2026학년도 1학기 취득학점포기 안내 (성적포기) (3/26~30)",
+    "category": "학사",
+    "date": "2026-03-06",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=364308&article.offset=0&articleLimit=10"
   },
   {
     "id": 4,
-    "title": "The Ajou Universe Vol. 42",
+    "title": "[학군단]26년도 학군사관 ROTC 후보생 67,68기 모집안내",
     "category": "기타",
-    "date": "2026-03-17",
-    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=365243"
+    "date": "2026-02-27",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=363628&article.offset=0&articleLimit=10"
   },
   {
     "id": 5,
-    "title": "[🔥오늘마감]파란학기제 서포터즈(Bluemeing) 3기 모집 (~3.17(화) 18:00)",
-    "category": "파란학기제",
-    "date": "2026-03-17",
-    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=365191"
+    "title": "[학부/학사과정]2025학년도 후기(2026년 8월) 조기졸업 신청 안내",
+    "category": "학사",
+    "date": "2026-02-24",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=363408&article.offset=0&articleLimit=10"
+  },
+  {
+    "id": 6,
+    "title": "2026학년도 🍚천원의 아침밥🍚 '아침든든 아주' 시행 안내 (2026.03.03 ~ )",
+    "category": "행사",
+    "date": "2026-02-24",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=363358&article.offset=0&articleLimit=10"
+  },
+  {
+    "id": 7,
+    "title": "[학부] 2026-1학기 등록/환불 안내(2.20.~2.26.)",
+    "category": "학사",
+    "date": "2026-01-22",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=361732&article.offset=0&articleLimit=10"
+  },
+  {
+    "id": 8,
+    "title": "[학사] 2026-1학기 휴학/복학 신청 안내(01.15. 수정)",
+    "category": "학사",
+    "date": "2025-12-05",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=359625&article.offset=0&articleLimit=10"
+  },
+  {
+    "id": 9,
+    "title": "[긴급] 교직원 사칭 주의 안내",
+    "category": "사무",
+    "date": "2025-08-07",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=352588&article.offset=0&articleLimit=10"
+  },
+  {
+    "id": 10,
+    "title": "[학부/학사과정] ★필독★ 출석(전자출결, 공결, 취업계, 코로나 등) 관련 안내(08.29.수정)",
+    "category": "학사",
+    "date": "2024-08-21",
+    "link": "https://www.ajou.ac.kr/kr/ajou/notice.do?mode=view&articleNo=324578&article.offset=0&articleLimit=10"
   }
 ]
