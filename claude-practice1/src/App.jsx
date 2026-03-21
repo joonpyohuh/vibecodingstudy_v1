@@ -10,6 +10,7 @@ import CTA from './components/CTA';
 import Footer from './components/Footer';
 import LearningPage from './components/LearningPage';
 import BCubeIntro from './components/BCubeIntro';
+import AjouNotices from './components/AjouNotices';
 import './App.css';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <PromptEngineering />
         <ProsCons />
         <Takeaways />
+        <AjouNotices />
         <CTA onLearn={() => setPage('learn')} />
       </main>
       <Footer />

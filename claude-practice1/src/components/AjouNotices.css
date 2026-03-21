@@ -1,0 +1,319 @@
+/* ── 섹션 래퍼 ───────────────────────────────── */
+.notices-section {
+  padding: 100px 0;
+  background: #F2F4F6;
+}
+
+.notices-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── 왼쪽 사이드 패널 ─────────────────────────── */
+.notices-aside {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.ajou-logo {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border-radius: 16px;
+  margin-bottom: 4px;
+}
+
+.aside-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #191F28;
+  line-height: 1.3;
+  letter-spacing: -0.6px;
+}
+
+.aside-desc {
+  font-size: 14px;
+  color: #6B7684;
+  line-height: 1.7;
+}
+
+.aside-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  padding: 14px 18px;
+  background: #F2F4F6;
+  border-radius: 14px;
+  width: 100%;
+}
+
+.stat-num {
+  font-size: 28px;
+  font-weight: 800;
+  color: #3182F6;
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #6B7684;
+  font-weight: 500;
+}
+
+.aside-more-btn {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 13px 0;
+  background: #3182F6;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+  transition: background 0.18s, transform 0.18s;
+}
+
+.aside-more-btn:hover {
+  background: #1B6DE0;
+  transform: translateY(-1px);
+}
+
+/* ── 오른쪽 콘텐츠 ──────────────────────────── */
+.notices-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── 검색창 ─────────────────────────────────── */
+.search-wrap {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  gap: 10px;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  font-family: inherit;
+  color: #191F28;
+  padding: 16px 0;
+}
+
+.search-input::placeholder {
+  color: #9EA7B1;
+}
+
+.search-clear {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #9EA7B1;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.search-clear svg {
+  width: 16px;
+  height: 16px;
+}
+
+.search-clear:hover {
+  color: #3182F6;
+}
+
+/* ── 리스트 ─────────────────────────────────── */
+.notices-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── 공지 아이템 ─────────────────────────────── */
+.notice-item {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.notice-item:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+  transform: translateY(-2px);
+}
+
+.notice-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 16px;
+}
+
+.notice-badge {
+  flex-shrink: 0;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  letter-spacing: -0.1px;
+}
+
+.notice-title {
+  flex: 1;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #191F28;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.15s;
+}
+
+.notice-item:hover .notice-title {
+  color: #3182F6;
+}
+
+.notice-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.notice-date {
+  font-size: 12px;
+  color: #9EA7B1;
+  white-space: nowrap;
+}
+
+.notice-arrow {
+  width: 16px;
+  height: 16px;
+  color: #C8D0DA;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.notice-item:hover .notice-arrow {
+  transform: translateX(3px);
+  color: #3182F6;
+}
+
+/* ── 빈 상태 ─────────────────────────────────── */
+.notices-empty {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.empty-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #191F28;
+  margin-bottom: 6px;
+}
+
+.empty-sub {
+  font-size: 14px;
+  color: #9EA7B1;
+}
+
+/* ── 반응형 ─────────────────────────────────── */
+@media (max-width: 860px) {
+  .notices-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .notices-aside {
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: static;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+  }
+
+  .ajou-logo {
+    width: 52px;
+    height: 52px;
+    margin-bottom: 0;
+  }
+
+  .aside-title {
+    font-size: 18px;
+  }
+
+  .aside-desc { display: none; }
+
+  .aside-stat {
+    width: auto;
+    padding: 10px 14px;
+  }
+
+  .aside-more-btn {
+    width: auto;
+    padding: 11px 20px;
+  }
+}
+
+@media (max-width: 540px) {
+  .notice-link {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .notice-title {
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    order: 3;
+    flex-basis: 100%;
+  }
+
+  .notice-meta {
+    margin-left: auto;
+  }
+}
