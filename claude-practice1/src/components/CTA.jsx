@@ -66,7 +66,7 @@ export default function CTA({ onLearn }) {
             </div>
             <div className="cta-team-info">
               <span className="cta-team-title">팀 프로젝트</span>
-              <span className="cta-team-desc">9명이 팀을 이뤄 실제 프로덕트를 만듭니다</span>
+              <span className="cta-team-desc">6명이 팀을 이뤄 실제 프로덕트를 만듭니다</span>
             </div>
           </div>
 
@@ -75,7 +75,7 @@ export default function CTA({ onLearn }) {
               '🚀 Week 2부터 팀 프로젝트',
               '💻 실제 프로덕트 제작',
               '🤖 AI 도구 완전 정복',
-              '✨ 9명이 함께 성장',
+              '✨ 6명이 함께 성장',
             ].map((item, i) => (
               <div key={i} className="check-item">{item}</div>
             ))}
