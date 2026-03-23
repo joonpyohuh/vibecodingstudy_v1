@@ -9,6 +9,7 @@ import Takeaways from './components/Takeaways';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import LearningPage from './components/LearningPage';
+import VibeCodingGrowth from './components/VibeCodingGrowth';
 import BCubeIntro from './components/BCubeIntro';
 import AjouNotices from './components/AjouNotices';
 import './App.css';
@@ -45,6 +46,10 @@ function App() {
     return <LearningPage onBack={() => setPage('home')} />;
   }
 
+  if (page === 'growth') {
+    return <VibeCodingGrowth onBack={() => setPage('home')} />;
+  }
+
   return (
     <>
       {showIntro && <BCubeIntro onDone={handleIntroDone} />}
@@ -57,7 +62,7 @@ function App() {
         <ProsCons />
         <Takeaways />
         <AjouNotices />
-        <CTA onLearn={() => setPage('learn')} />
+        <CTA onLearn={() => setPage('learn')} onGrowth={() => setPage('growth')} />
       </main>
       <Footer />
     </>

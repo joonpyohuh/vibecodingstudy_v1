@@ -1,0 +1,579 @@
+/* ──────────────────────────────────────────
+   VibeCodingGrowth — 바이브코딩 성장 페이지
+   ────────────────────────────────────────── */
+
+.vcg-page {
+  min-height: 100vh;
+  background: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #1d1d1f;
+  overflow-x: hidden;
+}
+
+/* ── 네비 ── */
+.vcg-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.vcg-back-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  color: #3a3aff;
+  padding: 8px 14px;
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+.vcg-back-btn:hover { background: rgba(58, 58, 255, 0.08); }
+
+.vcg-nav-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d1d1f;
+}
+.vcg-nav-icon { font-size: 18px; }
+
+/* ── 공통 컨테이너 ── */
+.vcg-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.vcg-section-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #3a3aff;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.vcg-section-title {
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 800;
+  color: #1d1d1f;
+  margin: 0 0 12px;
+  line-height: 1.25;
+}
+
+.vcg-section-desc {
+  font-size: 17px;
+  color: #6e6e73;
+  margin: 0 0 56px;
+  line-height: 1.6;
+}
+
+/* ── 히어로 ── */
+.vcg-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  overflow: hidden;
+}
+
+.vcg-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 30%, #f0f0ff 0%, #fff 60%);
+  z-index: 0;
+}
+
+.vcg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: float 6s ease-in-out infinite;
+}
+.vcg-orb-1 {
+  width: 420px; height: 420px;
+  background: radial-gradient(circle, #3a3aff44, transparent 70%);
+  top: -10%; left: -10%;
+  animation-delay: 0s;
+}
+.vcg-orb-2 {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, #00c06033, transparent 70%);
+  bottom: 10%; right: 5%;
+  animation-delay: 2s;
+}
+.vcg-orb-3 {
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, #ff3b6b22, transparent 70%);
+  top: 40%; left: 60%;
+  animation-delay: 4s;
+}
+
+.vcg-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.vcg-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(58, 58, 255, 0.08);
+  border: 1px solid rgba(58, 58, 255, 0.2);
+  color: #3a3aff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  letter-spacing: 0.02em;
+}
+
+.vcg-hero-title {
+  font-size: clamp(36px, 6vw, 68px);
+  font-weight: 900;
+  line-height: 1.15;
+  margin: 0 0 24px;
+  color: #1d1d1f;
+}
+
+.vcg-hero-desc {
+  font-size: clamp(16px, 2vw, 20px);
+  color: #6e6e73;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.vcg-hero-scroll {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #3a3aff;
+  font-size: 14px;
+  font-weight: 600;
+}
+.vcg-scroll-arrow {
+  font-size: 20px;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+/* ── 통계 ── */
+.vcg-stats-section {
+  padding: 100px 0;
+  background: #f5f5f7;
+}
+
+.vcg-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.vcg-stat-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.vcg-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.vcg-stat-num {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.vcg-stat-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.vcg-stat-sub {
+  font-size: 12px;
+  color: #86868b;
+  margin-bottom: 16px;
+}
+
+.vcg-stat-bar {
+  height: 4px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.vcg-stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 1.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── 타임라인 ── */
+.vcg-timeline-section {
+  padding: 100px 0;
+  background: #fff;
+}
+
+.vcg-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.vcg-timeline-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 0 20px;
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.vcg-timeline-item.vcg-tl-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.vcg-tl-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vcg-tl-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.vcg-tl-connector {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(to bottom, #e5e5ea, #e5e5ea);
+  min-height: 32px;
+}
+
+.vcg-tl-card {
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+.vcg-tl-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  border-color: rgba(58,58,255,0.2);
+}
+
+.vcg-future .vcg-tl-card {
+  background: linear-gradient(135deg, #fff8f0, #fff5f8);
+  border-style: dashed;
+}
+
+.vcg-tl-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.vcg-tl-year {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.vcg-tl-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.02em;
+}
+
+.vcg-tl-emoji {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.vcg-tl-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1d1d1f;
+  margin: 0 0 8px;
+}
+
+.vcg-tl-desc {
+  font-size: 15px;
+  color: #6e6e73;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── 성장 속도 ── */
+.vcg-speed-section {
+  padding: 100px 0;
+  background: #0d0d1a;
+}
+
+.vcg-speed-section .vcg-section-label {
+  color: #a5b4fc;
+}
+
+.vcg-speed-section .vcg-section-title {
+  color: #fff;
+}
+
+.vcg-speed-section .vcg-section-desc {
+  color: #94a3b8;
+}
+
+.vcg-speed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.vcg-speed-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 28px 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s;
+}
+.vcg-speed-card.vcg-speed-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.vcg-speed-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.vcg-speed-icon { font-size: 32px; margin-bottom: 12px; }
+
+.vcg-speed-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 4px;
+}
+
+.vcg-speed-period {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+.vcg-speed-nums {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.vcg-speed-before, .vcg-speed-after {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.vcg-speed-label-sm {
+  font-size: 11px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.vcg-speed-val-before {
+  font-size: 15px;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.vcg-speed-val-after {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.vcg-speed-arrow {
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.vcg-speed-bar-bg {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.vcg-speed-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── 미래 전망 ── */
+.vcg-future-section {
+  padding: 100px 0;
+  background: #f5f5f7;
+}
+
+.vcg-future-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.vcg-future-card {
+  border-radius: 20px;
+  padding: 32px 28px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.vcg-future-card.vcg-future-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vcg-future-icon { font-size: 36px; margin-bottom: 16px; }
+
+.vcg-future-title {
+  font-size: 20px;
+  font-weight: 800;
+  color: #1d1d1f;
+  margin: 0 0 10px;
+}
+
+.vcg-future-desc {
+  font-size: 15px;
+  color: #6e6e73;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── 결론 배너 ── */
+.vcg-conclusion {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: linear-gradient(135deg, #3a3aff, #6366f1);
+  color: #fff;
+  border-radius: 20px;
+  padding: 28px 32px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s 0.5s, transform 0.6s 0.5s;
+}
+.vcg-conclusion.vcg-conclusion-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vcg-conclusion-icon { font-size: 32px; flex-shrink: 0; }
+
+.vcg-conclusion-text {
+  font-size: 17px;
+  line-height: 1.6;
+}
+.vcg-conclusion-text strong { font-weight: 800; }
+
+/* ── 푸터 CTA ── */
+.vcg-footer-cta {
+  padding: 100px 0;
+  background: #1d1d1f;
+  text-align: center;
+}
+
+.vcg-fcta-title {
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 16px;
+}
+
+.vcg-fcta-desc {
+  font-size: 18px;
+  color: #86868b;
+  margin-bottom: 36px;
+}
+
+.vcg-fcta-btn {
+  background: linear-gradient(135deg, #3a3aff, #6366f1);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 18px 40px;
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.vcg-fcta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(58,58,255,0.4);
+}
+
+/* ── 반응형 ── */
+@media (max-width: 900px) {
+  .vcg-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .vcg-speed-grid { grid-template-columns: repeat(2, 1fr); }
+  .vcg-future-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .vcg-hero { padding: 80px 20px 60px; }
+  .vcg-stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .vcg-stat-card { padding: 20px 16px; }
+  .vcg-speed-grid { grid-template-columns: 1fr; }
+  .vcg-timeline-item { grid-template-columns: 32px 1fr; gap: 0 12px; }
+  .vcg-tl-card { padding: 18px 16px; }
+  .vcg-conclusion { flex-direction: column; text-align: center; padding: 24px; }
+  .vcg-future-card { padding: 24px 20px; }
+  .vcg-container { padding: 0 16px; }
+  .vcg-section-title { margin-bottom: 8px; }
+  .vcg-section-desc { margin-bottom: 36px; font-size: 15px; }
+}

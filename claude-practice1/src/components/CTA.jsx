@@ -16,7 +16,7 @@ function useInView(ref) {
 
 const floatingEmojis = ['⚡', '🤖', '🚀', '💡', '🎯', '✨', '🔥', '💻', '🌟', '🎨'];
 
-export default function CTA({ onLearn }) {
+export default function CTA({ onLearn, onGrowth }) {
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef);
 
@@ -84,6 +84,10 @@ export default function CTA({ onLearn }) {
           <div className={`cta-actions ${inView ? 'animate-bounce-in delay-5' : ''}`}>
             <button className="cta-btn-primary" onClick={onLearn}>
               <span>학습하기</span>
+              <span className="btn-arrow">→</span>
+            </button>
+            <button className="cta-btn-primary" onClick={onGrowth} style={{ background: 'linear-gradient(135deg, #00c060, #10b981)' }}>
+              <span>📈 성장 현황 보기</span>
               <span className="btn-arrow">→</span>
             </button>
             <button className="cta-btn-secondary" onClick={() => document.querySelector('#what')?.scrollIntoView({ behavior: 'smooth' })}>
