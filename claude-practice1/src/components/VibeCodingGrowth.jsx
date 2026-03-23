@@ -135,6 +135,92 @@ const SPEED_ITEMS = [
   },
 ];
 
+const GOOGLE_UPDATES = [
+  {
+    icon: '🔥',
+    product: 'Firebase Studio',
+    tag: 'Google I/O 2025',
+    tagColor: '#ff3b6b',
+    title: '브라우저에서 풀스택 앱을 한 번에',
+    desc: '기존 Project IDX가 Firebase Studio로 진화. 브라우저 하나로 프론트엔드·백엔드·DB·배포까지 완성. Gemini AI가 실시간으로 코드를 생성하며 앱 구조를 제안합니다.',
+    highlights: ['Gemini 2.5 Pro 통합', '원클릭 배포', '실시간 미리보기', '풀스택 템플릿'],
+  },
+  {
+    icon: '✨',
+    product: 'Gemini 2.5 Pro',
+    tag: '2025 최신',
+    tagColor: '#3a3aff',
+    title: '단 한 줄의 프롬프트로 풀스택 앱 생성',
+    desc: '"실시간 채팅 앱 만들어줘" 한 마디로 React 프론트엔드 + Node 백엔드 + DB 스키마가 완성됩니다. Google I/O 2025에서 실시간 시연으로 전 세계를 충격에 빠뜨렸습니다.',
+    highlights: ['100만 토큰 컨텍스트', '멀티모달 입력', '코드 전체 이해', '자동 리팩토링'],
+  },
+  {
+    icon: '🤖',
+    product: 'Jules (AI Agent)',
+    tag: 'GitHub 통합',
+    tagColor: '#00c060',
+    title: 'GitHub 이슈 → 자율 PR 생성',
+    desc: 'GitHub 이슈를 배정받으면 Jules가 코드를 직접 수정하고 PR까지 올립니다. 사람이 리뷰만 하면 됩니다. "버그 수정 담당 AI 팀원"이 실제로 등장했습니다.',
+    highlights: ['GitHub 이슈 자동 처리', '코드 수정 + PR 생성', '테스트 자동 실행', '리뷰 대기'],
+  },
+  {
+    icon: '⌨️',
+    product: 'Gemini CLI',
+    tag: '무료 공개',
+    tagColor: '#ff9500',
+    title: '터미널에서 전체 코드베이스를 AI가 분석',
+    desc: '100만 토큰 컨텍스트로 대형 프로젝트 전체를 한 번에 읽습니다. Claude Code처럼 파일 생성·수정·git 커밋까지 자율 실행. 무료로 사용 가능합니다.',
+    highlights: ['100만 토큰', '전체 프로젝트 분석', '파일 자율 편집', '무료 제공'],
+  },
+];
+
+const EFFICIENCY_STATS = [
+  {
+    icon: '⚡',
+    label: '작업 완료 속도',
+    human: 100,
+    ai: 155,
+    unit: '%',
+    humanLabel: '혼자',
+    aiLabel: 'AI 협업',
+    color: '#3a3aff',
+    source: 'GitHub 공식 연구',
+  },
+  {
+    icon: '🐛',
+    label: '버그 발견·수정 속도',
+    human: 100,
+    ai: 220,
+    unit: '%',
+    humanLabel: '수동 디버깅',
+    aiLabel: 'AI 보조',
+    color: '#00c060',
+    source: 'McKinsey 2024',
+  },
+  {
+    icon: '📝',
+    label: '코드 리뷰 처리량',
+    human: 100,
+    ai: 300,
+    unit: '%',
+    humanLabel: '사람만',
+    aiLabel: 'AI 초안 + 사람 검토',
+    color: '#ff9500',
+    source: 'Stack Overflow 2024',
+  },
+  {
+    icon: '🚀',
+    label: '프로토타입 제작 속도',
+    human: 100,
+    ai: 500,
+    unit: '%',
+    humanLabel: '전통 방식',
+    aiLabel: '바이브코딩',
+    color: '#ff3b6b',
+    source: 'Cursor 내부 데이터',
+  },
+];
+
 const FUTURE_CARDS = [
   {
     icon: '🧠',
@@ -193,6 +279,8 @@ export default function VibeCodingGrowth({ onBack }) {
   const [speedRef, speedInView] = useInView(0.15);
   const [futureRef, futureInView] = useInView(0.15);
   const [timelineRef, timelineInView] = useInView(0.05);
+  const [googleRef, googleInView] = useInView(0.08);
+  const [effRef, effInView] = useInView(0.1);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -325,6 +413,113 @@ export default function VibeCodingGrowth({ onBack }) {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Google AI Studio 발표 ── */}
+      <section className="vcg-google-section" ref={googleRef}>
+        <div className="vcg-container">
+          <div className="vcg-live-badge">
+            <span className="vcg-live-dot" />
+            BREAKING — 2025 최신 발표
+          </div>
+          <h2 className="vcg-section-title vcg-white">Google이 쏘아올린 공</h2>
+          <p className="vcg-section-desc vcg-gray">
+            Google I/O 2025에서 공개된 풀스택 바이브코딩 도구들.<br />
+            이제 비개발자도 브라우저 하나로 실제 서비스를 만들 수 있습니다.
+          </p>
+
+          <div className="vcg-google-grid">
+            {GOOGLE_UPDATES.map((item, i) => (
+              <div
+                key={i}
+                className={`vcg-google-card ${googleInView ? 'vcg-google-in' : ''}`}
+                style={{ transitionDelay: `${i * 0.12}s` }}
+              >
+                <div className="vcg-google-top">
+                  <span className="vcg-google-icon">{item.icon}</span>
+                  <span className="vcg-google-tag" style={{ background: item.tagColor + '22', color: item.tagColor, border: `1px solid ${item.tagColor}44` }}>
+                    {item.tag}
+                  </span>
+                </div>
+                <div className="vcg-google-product">{item.product}</div>
+                <h3 className="vcg-google-title">{item.title}</h3>
+                <p className="vcg-google-desc">{item.desc}</p>
+                <div className="vcg-google-highlights">
+                  {item.highlights.map((h, j) => (
+                    <span key={j} className="vcg-google-chip">{h}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className={`vcg-google-banner ${googleInView ? 'vcg-gbanner-in' : ''}`}>
+            <div className="vcg-gbanner-pulse" />
+            <div className="vcg-gbanner-text">
+              <strong>6개월 전 상상도 못했던 일이 오늘 현실입니다.</strong>
+              <span> 이 속도라면 6개월 후는 또 어떻게 바뀔까요?</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── AI 효율성 & 능률 ── */}
+      <section className="vcg-eff-section" ref={effRef}>
+        <div className="vcg-container">
+          <div className="vcg-section-label">EFFICIENCY</div>
+          <h2 className="vcg-section-title">AI가 만드는 압도적인 차이</h2>
+          <p className="vcg-section-desc">단순한 도움이 아닙니다. AI는 개발 생산성의 패러다임 자체를 바꾸고 있습니다.</p>
+
+          <div className="vcg-eff-grid">
+            {EFFICIENCY_STATS.map((item, i) => (
+              <div
+                key={i}
+                className={`vcg-eff-card ${effInView ? 'vcg-eff-in' : ''}`}
+                style={{ transitionDelay: `${i * 0.12}s` }}
+              >
+                <div className="vcg-eff-icon">{item.icon}</div>
+                <div className="vcg-eff-label">{item.label}</div>
+
+                <div className="vcg-eff-bars">
+                  <div className="vcg-eff-bar-row">
+                    <span className="vcg-eff-bar-label">{item.humanLabel}</span>
+                    <div className="vcg-eff-bar-track">
+                      <div
+                        className="vcg-eff-bar-fill vcg-eff-bar-human"
+                        style={{ width: effInView ? `${(item.human / item.ai) * 100}%` : '0%', transitionDelay: `${0.3 + i * 0.12}s` }}
+                      />
+                    </div>
+                    <span className="vcg-eff-bar-val vcg-muted">{item.human}{item.unit}</span>
+                  </div>
+                  <div className="vcg-eff-bar-row">
+                    <span className="vcg-eff-bar-label vcg-eff-bar-label--ai" style={{ color: item.color }}>{item.aiLabel}</span>
+                    <div className="vcg-eff-bar-track">
+                      <div
+                        className="vcg-eff-bar-fill"
+                        style={{ background: item.color, width: effInView ? '100%' : '0%', transitionDelay: `${0.45 + i * 0.12}s` }}
+                      />
+                    </div>
+                    <span className="vcg-eff-bar-val" style={{ color: item.color }}>{item.ai}{item.unit}</span>
+                  </div>
+                </div>
+
+                <div className="vcg-eff-multiplier" style={{ color: item.color }}>
+                  {(item.ai / item.human).toFixed(1)}x 빠름
+                </div>
+                <div className="vcg-eff-source">{item.source}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className={`vcg-eff-quote ${effInView ? 'vcg-eff-quote-in' : ''}`}>
+            <div className="vcg-eff-quote-mark">"</div>
+            <p className="vcg-eff-quote-text">
+              소프트웨어 엔지니어링의 95%는 곧 AI가 할 것입니다.<br />
+              나머지 5%는 AI에게 무엇을 시킬지 결정하는 사람의 몫입니다.
+            </p>
+            <div className="vcg-eff-quote-author">— Jensen Huang, NVIDIA CEO</div>
           </div>
         </div>
       </section>

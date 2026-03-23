@@ -454,6 +454,289 @@
   transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Google AI Studio 발표 ── */
+.vcg-google-section {
+  padding: 100px 0;
+  background: #0a0a1a;
+}
+
+.vcg-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 59, 107, 0.15);
+  border: 1px solid rgba(255, 59, 107, 0.4);
+  color: #ff3b6b;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.vcg-live-dot {
+  width: 7px;
+  height: 7px;
+  background: #ff3b6b;
+  border-radius: 50%;
+  animation: pulse-ring 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.vcg-white { color: #f1f5f9 !important; }
+.vcg-gray { color: #94a3b8 !important; }
+
+.vcg-google-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.vcg-google-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 20px;
+  padding: 28px 24px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s, border-color 0.3s;
+}
+.vcg-google-card.vcg-google-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.vcg-google-card:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+
+.vcg-google-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.vcg-google-icon { font-size: 28px; }
+
+.vcg-google-tag {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.04em;
+}
+
+.vcg-google-product {
+  font-size: 12px;
+  font-weight: 800;
+  color: #475569;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.vcg-google-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: #f1f5f9;
+  margin: 0 0 12px;
+  line-height: 1.3;
+}
+
+.vcg-google-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.vcg-google-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.vcg-google-chip {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.vcg-google-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 59, 107, 0.1);
+  border: 1px solid rgba(255, 59, 107, 0.25);
+  border-radius: 16px;
+  padding: 22px 28px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s 0.5s, transform 0.6s 0.5s;
+  overflow: hidden;
+}
+.vcg-google-banner.vcg-gbanner-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vcg-gbanner-pulse {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,59,107,0.06), transparent);
+  animation: shimmer 2.5s infinite;
+}
+
+.vcg-gbanner-text {
+  position: relative;
+  font-size: 15px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+.vcg-gbanner-text strong { color: #f1f5f9; font-weight: 800; }
+
+/* ── AI 효율성 섹션 ── */
+.vcg-eff-section {
+  padding: 100px 0;
+  background: #f5f5f7;
+}
+
+.vcg-eff-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.vcg-eff-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 20px;
+  padding: 28px 24px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s;
+}
+.vcg-eff-card.vcg-eff-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.vcg-eff-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.vcg-eff-icon { font-size: 28px; margin-bottom: 10px; }
+
+.vcg-eff-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1d1d1f;
+  margin-bottom: 18px;
+}
+
+.vcg-eff-bars { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+
+.vcg-eff-bar-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 50px;
+  align-items: center;
+  gap: 10px;
+}
+
+.vcg-eff-bar-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #86868b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vcg-eff-bar-label--ai { font-weight: 700; }
+
+.vcg-eff-bar-track {
+  height: 8px;
+  background: #f0f0f5;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.vcg-eff-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vcg-eff-bar-human { background: #d1d5db; }
+
+.vcg-eff-bar-val {
+  font-size: 13px;
+  font-weight: 800;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.vcg-muted { color: #86868b; }
+
+.vcg-eff-multiplier {
+  font-size: 22px;
+  font-weight: 900;
+  margin-bottom: 4px;
+}
+
+.vcg-eff-source {
+  font-size: 11px;
+  color: #86868b;
+}
+
+/* 인용구 */
+.vcg-eff-quote {
+  background: linear-gradient(135deg, #1d1d1f, #2a2a3a);
+  border-radius: 24px;
+  padding: 40px 48px;
+  text-align: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s 0.5s, transform 0.6s 0.5s;
+}
+.vcg-eff-quote.vcg-eff-quote-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vcg-eff-quote-mark {
+  font-size: 64px;
+  font-family: Georgia, serif;
+  color: #3a3aff;
+  line-height: 0.8;
+  margin-bottom: 20px;
+  opacity: 0.7;
+}
+
+.vcg-eff-quote-text {
+  font-size: clamp(17px, 2.5vw, 22px);
+  color: #f1f5f9;
+  line-height: 1.7;
+  margin: 0 0 20px;
+  font-weight: 500;
+}
+
+.vcg-eff-quote-author {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 /* ── 미래 전망 ── */
 .vcg-future-section {
   padding: 100px 0;
@@ -562,6 +845,8 @@
   .vcg-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .vcg-speed-grid { grid-template-columns: repeat(2, 1fr); }
   .vcg-future-grid { grid-template-columns: 1fr; }
+  .vcg-google-grid { grid-template-columns: 1fr; }
+  .vcg-eff-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
@@ -576,4 +861,9 @@
   .vcg-container { padding: 0 16px; }
   .vcg-section-title { margin-bottom: 8px; }
   .vcg-section-desc { margin-bottom: 36px; font-size: 15px; }
+  .vcg-google-card { padding: 22px 18px; }
+  .vcg-google-banner { flex-direction: column; padding: 20px; }
+  .vcg-eff-bar-row { grid-template-columns: 70px 1fr 44px; }
+  .vcg-eff-quote { padding: 28px 24px; }
+  .vcg-eff-quote-mark { font-size: 48px; }
 }
