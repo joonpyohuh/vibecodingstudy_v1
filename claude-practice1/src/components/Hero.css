@@ -1,3 +1,49 @@
+/* ── 고양이 ── */
+@keyframes cat-float {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+@keyframes cat-tail {
+  0%, 100% { transform: rotate(0deg); transform-origin: bottom left; }
+  50% { transform: rotate(15deg); transform-origin: bottom left; }
+}
+@keyframes bubble-pop {
+  0% { opacity: 0; transform: scale(0.6) translateY(6px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.hero-cat {
+  position: absolute;
+  top: -10px;
+  right: calc(50% - 540px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  animation: cat-float 4s ease-in-out infinite;
+}
+
+.hero-cat-svg {
+  width: 100px;
+  height: 92px;
+  filter: drop-shadow(0 8px 24px rgba(167,139,250,0.4));
+}
+
+.hero-cat-bubble {
+  background: white;
+  border: 1.5px solid rgba(167,139,250,0.4);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #7c3aed;
+  white-space: nowrap;
+  box-shadow: 0 4px 16px rgba(167,139,250,0.25);
+  margin-top: 8px;
+  animation: bubble-pop 0.5s cubic-bezier(0.34,1.56,0.64,1) 1.5s both;
+}
+
 /* ── Hero — Apple 대형 타이포 + 화이트 배경 ── */
 .hero {
   min-height: 100vh;
@@ -352,6 +398,9 @@
   .hero { flex-direction: column; text-align: center; gap: 40px; padding: 100px 20px 60px; }
   .hero-ajou-row { margin: 0 auto 16px; }
   .hero-actions  { justify-content: center; }
+  .hero-cat { right: 16px; top: 70px; }
+  .hero-cat-svg { width: 70px; height: 64px; }
+  .hero-cat-bubble { font-size: 10px; padding: 4px 10px; }
   .hero-stats    { justify-content: center; }
   .hero-terminal { max-width: 100%; width: 100%; }
 }
