@@ -116,56 +116,42 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* 귀여운 고양이 */}
-      <div className="hero-cat animate-slide-right delay-3" aria-hidden="true">
-        <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" className="hero-cat-svg">
-          {/* 꼬리 */}
-          <path d="M88 90 Q110 70 105 50 Q100 35 90 45 Q95 60 85 80 Z" fill="#c0a0f0" />
-          {/* 몸통 */}
-          <ellipse cx="60" cy="82" rx="36" ry="24" fill="#d8b4fe" />
-          {/* 배 (밝은 부분) */}
-          <ellipse cx="60" cy="84" rx="20" ry="16" fill="#f3e8ff" />
-          {/* 머리 */}
-          <circle cx="60" cy="52" r="26" fill="#d8b4fe" />
-          {/* 귀 왼쪽 */}
-          <polygon points="38,34 30,14 50,28" fill="#d8b4fe" />
-          <polygon points="40,32 34,18 48,28" fill="#f9a8d4" />
-          {/* 귀 오른쪽 */}
-          <polygon points="82,34 90,14 70,28" fill="#d8b4fe" />
-          <polygon points="80,32 86,18 72,28" fill="#f9a8d4" />
-          {/* 눈 왼쪽 */}
-          <ellipse cx="50" cy="52" rx="5" ry="6" fill="#1d1d1f" />
-          <circle cx="52" cy="50" r="1.8" fill="white" />
-          {/* 눈 오른쪽 */}
-          <ellipse cx="70" cy="52" rx="5" ry="6" fill="#1d1d1f" />
-          <circle cx="72" cy="50" r="1.8" fill="white" />
-          {/* 코 */}
-          <polygon points="60,59 57,63 63,63" fill="#f472b6" />
-          {/* 입 */}
-          <path d="M57,63 Q60,67 63,63" fill="none" stroke="#f472b6" strokeWidth="1.5" strokeLinecap="round" />
-          {/* 수염 왼쪽 */}
-          <line x1="36" y1="61" x2="54" y2="63" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-          <line x1="35" y1="65" x2="54" y2="65" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-          {/* 수염 오른쪽 */}
-          <line x1="84" y1="61" x2="66" y2="63" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-          <line x1="85" y1="65" x2="66" y2="65" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
-          {/* 앞발 왼쪽 */}
-          <ellipse cx="44" cy="102" rx="10" ry="7" fill="#c4b5fd" />
-          {/* 앞발 오른쪽 */}
-          <ellipse cx="76" cy="102" rx="10" ry="7" fill="#c4b5fd" />
-          {/* 발가락 선 */}
-          <line x1="40" y1="103" x2="40" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-          <line x1="44" y1="104" x2="44" y2="108" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-          <line x1="48" y1="103" x2="48" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-          <line x1="72" y1="103" x2="72" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-          <line x1="76" y1="104" x2="76" y2="108" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-          <line x1="80" y1="103" x2="80" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
-        </svg>
-        <div className="hero-cat-bubble">AI랑 같이 코딩중 🐾</div>
-      </div>
+      {/* Code terminal + 고양이 */}
+      <div className="hero-terminal-wrap animate-slide-right delay-4">
+        {/* 귀여운 고양이 — 터미널 위에 앉아있는 */}
+        <div className="hero-cat" aria-hidden="true">
+          <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" className="hero-cat-svg">
+            <path d="M88 90 Q110 70 105 50 Q100 35 90 45 Q95 60 85 80 Z" fill="#c0a0f0" />
+            <ellipse cx="60" cy="82" rx="36" ry="24" fill="#d8b4fe" />
+            <ellipse cx="60" cy="84" rx="20" ry="16" fill="#f3e8ff" />
+            <circle cx="60" cy="52" r="26" fill="#d8b4fe" />
+            <polygon points="38,34 30,14 50,28" fill="#d8b4fe" />
+            <polygon points="40,32 34,18 48,28" fill="#f9a8d4" />
+            <polygon points="82,34 90,14 70,28" fill="#d8b4fe" />
+            <polygon points="80,32 86,18 72,28" fill="#f9a8d4" />
+            <ellipse cx="50" cy="52" rx="5" ry="6" fill="#1d1d1f" />
+            <circle cx="52" cy="50" r="1.8" fill="white" />
+            <ellipse cx="70" cy="52" rx="5" ry="6" fill="#1d1d1f" />
+            <circle cx="72" cy="50" r="1.8" fill="white" />
+            <polygon points="60,59 57,63 63,63" fill="#f472b6" />
+            <path d="M57,63 Q60,67 63,63" fill="none" stroke="#f472b6" strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="36" y1="61" x2="54" y2="63" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
+            <line x1="35" y1="65" x2="54" y2="65" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
+            <line x1="84" y1="61" x2="66" y2="63" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
+            <line x1="85" y1="65" x2="66" y2="65" stroke="#9333ea" strokeWidth="1.2" strokeLinecap="round" opacity="0.6" />
+            <ellipse cx="44" cy="102" rx="10" ry="7" fill="#c4b5fd" />
+            <ellipse cx="76" cy="102" rx="10" ry="7" fill="#c4b5fd" />
+            <line x1="40" y1="103" x2="40" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+            <line x1="44" y1="104" x2="44" y2="108" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+            <line x1="48" y1="103" x2="48" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+            <line x1="72" y1="103" x2="72" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+            <line x1="76" y1="104" x2="76" y2="108" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+            <line x1="80" y1="103" x2="80" y2="107" stroke="#a78bfa" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+          </svg>
+          <div className="hero-cat-bubble">AI랑 같이 코딩중 🐾</div>
+        </div>
 
-      {/* Code terminal */}
-      <div className="hero-terminal animate-slide-right delay-4">
+      <div className="hero-terminal">
         <div className="terminal-header">
           <span className="terminal-dot red" />
           <span className="terminal-dot yellow" />
@@ -182,6 +168,7 @@ export default function Hero() {
         </div>
         <div className="terminal-cursor" />
       </div>
+      </div>{/* hero-terminal-wrap */}
 
       <div className="scroll-hint">
         <div className="scroll-mouse">
