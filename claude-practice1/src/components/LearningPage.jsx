@@ -300,6 +300,126 @@ function ToolCard({ tool, idx }) {
 }
 
 
+/* ── CoreSkillsSection ───────────────────────────────── */
+const CORE_SKILLS = [
+  {
+    num: '01',
+    icon: '✍️',
+    color: '#3182F6',
+    title: '프롬프트 엔지니어링',
+    subtitle: 'AI와 대화하는 기술',
+    desc: 'AI에게 원하는 것을 정확하게 전달하는 능력입니다. 모호한 말은 모호한 결과를 낳습니다. 구체적인 맥락, 기술 스택, 디자인 방향, 제약 조건을 담을수록 AI의 결과물 품질이 기하급수적으로 올라갑니다.',
+    tips: [
+      '기술 스택 명시 → "React + Tailwind로"',
+      '디자인 레퍼런스 포함 → "Toss 스타일로"',
+      '예외 조건 사전 정의 → "모바일 대응 포함"',
+      '결과물 형태 지정 → "컴포넌트 단위로"',
+    ],
+    badge: 'MUST HAVE',
+    badgeColor: '#3182F6',
+  },
+  {
+    num: '02',
+    icon: '🔧',
+    color: '#8B5CF6',
+    title: '하네스 엔지니어링',
+    subtitle: 'AI의 방향을 설계하는 기술',
+    desc: '단순히 한 줄 질문하는 것을 넘어, AI가 올바른 방식으로 일하도록 체계적인 환경(하네스)을 설계하는 능력입니다. CLAUDE.md 같은 지시 파일, 시스템 프롬프트, 권한 설정, 반복 작업 자동화 규칙을 통해 AI 에이전트의 행동 범위를 정밀하게 제어합니다.',
+    tips: [
+      'CLAUDE.md — 프로젝트 전체 규칙 정의',
+      '시스템 프롬프트 — 역할·제약 사전 부여',
+      '훅(Hook) — 특정 이벤트 시 자동 실행',
+      '작업 분리 — 대형 요청을 단계별로 구성',
+    ],
+    badge: 'KEY SKILL',
+    badgeColor: '#8B5CF6',
+  },
+  {
+    num: '03',
+    icon: '🗺️',
+    color: '#00C060',
+    title: '기획 능력',
+    subtitle: '아이디어를 구조로 바꾸는 기술',
+    desc: 'AI가 아무리 강력해도, "무엇을 만들지"를 결정하는 것은 사람입니다. 사용자 문제를 정의하고, 기능 우선순위를 정하고, 화면 흐름을 설계하는 기획력이 바이브코딩의 출발점입니다. 기획이 명확할수록 AI에게 내리는 지시도 정확해집니다.',
+    tips: [
+      '문제 정의 → "누구의 어떤 불편을 해결하나?"',
+      '핵심 기능 3개 먼저 → 욕심 줄이기',
+      '화면 흐름 스케치 → 와이어프레임',
+      '성공 기준 설정 → "이게 되면 완성"',
+    ],
+    badge: 'FOUNDATION',
+    badgeColor: '#00C060',
+  },
+];
+
+function CoreSkillsSection() {
+  const [ref, inView] = useInView(0.08);
+
+  return (
+    <section className="lp-skills" ref={ref}>
+      <div className="section-container">
+        <div className={`lp-section-head ${inView ? 'animate-fade-up' : ''}`}>
+          <div className="lp-eyebrow">CORE COMPETENCY</div>
+          <h2 className="lp-h2">
+            이제 중요한 건 <span className="gradient-text">이 3가지</span>
+          </h2>
+          <p className="lp-lead">
+            코드를 외우는 시대는 끝났습니다.<br />
+            바이브코딩 시대의 진짜 핵심 역량은 따로 있습니다.
+          </p>
+        </div>
+
+        <div className="lp-skills-grid">
+          {CORE_SKILLS.map((skill, i) => (
+            <div
+              key={i}
+              className={`lp-skill-card ${inView ? 'lp-skill-in' : ''}`}
+              style={{ transitionDelay: `${i * 0.15}s`, '--skill-color': skill.color }}
+            >
+              <div className="lp-skill-top">
+                <span className="lp-skill-num" style={{ color: skill.color }}>{skill.num}</span>
+                <span
+                  className="lp-skill-badge"
+                  style={{ background: skill.badgeColor + '18', color: skill.badgeColor, border: `1px solid ${skill.badgeColor}33` }}
+                >
+                  {skill.badge}
+                </span>
+              </div>
+
+              <div className="lp-skill-icon-wrap" style={{ background: skill.color + '14' }}>
+                <span className="lp-skill-icon">{skill.icon}</span>
+              </div>
+
+              <h3 className="lp-skill-title" style={{ color: skill.color }}>{skill.title}</h3>
+              <p className="lp-skill-subtitle">{skill.subtitle}</p>
+              <p className="lp-skill-desc">{skill.desc}</p>
+
+              <div className="lp-skill-tips">
+                <div className="lp-skill-tips-label">핵심 포인트</div>
+                {skill.tips.map((tip, j) => (
+                  <div key={j} className="lp-skill-tip">
+                    <span className="lp-skill-tip-dot" style={{ background: skill.color }} />
+                    {tip}
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* 요약 배너 */}
+        <div className={`lp-skills-banner ${inView ? 'lp-banner-in' : ''}`}>
+          <div className="lp-skills-banner-icon">💡</div>
+          <div className="lp-skills-banner-text">
+            <strong>코드 문법보다 중요한 것</strong>
+            <span> — 무엇을 만들지 기획하고, AI에게 정확히 전달하고, 그 흐름을 설계하는 능력</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── GuiCliSection ───────────────────────────────────── */
 function GuiCliSection() {
   const [ref, inView] = useInView(0.08);
@@ -494,6 +614,9 @@ export default function LearningPage({ onBack }) {
 
       {/* gui vs cli */}
       <GuiCliSection />
+
+      {/* 핵심 역량 */}
+      <CoreSkillsSection />
 
       {/* footer cta */}
       <section className="lp-fcta">
