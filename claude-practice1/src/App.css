@@ -3,10 +3,12 @@
 }
 
 body {
-  background: #FAF9F6;
+  background: #ffffff;
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
 }
 
 ::selection {
-  color: #FAF9F6;
-  background: #1C1C1C;
+  color: #ffffff;
+  background: #191f28;
 }

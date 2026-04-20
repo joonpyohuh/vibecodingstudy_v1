@@ -35,9 +35,10 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Noto Sans KR', 'Space Grotesk', -apple-system, sans-serif;
-  background: #FAF9F6;
-  color: #1C1C1C;
+  font-family: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont,
+    'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  background: #ffffff;
+  color: #191f28;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
