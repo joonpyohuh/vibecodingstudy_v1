@@ -36,8 +36,8 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Noto Sans KR', 'Space Grotesk', -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  background: #FAF9F6;
+  color: #1C1C1C;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
