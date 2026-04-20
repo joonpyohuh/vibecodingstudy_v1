@@ -44,6 +44,16 @@ const leadMagnets = [
   },
 ];
 
+const balloonTracks = [
+  { left: '8%', color: '#7db7ff', delay: 0 },
+  { left: '22%', color: '#5f8bff', delay: 0.1 },
+  { left: '36%', color: '#8ad0ff', delay: 0.2 },
+  { left: '50%', color: '#9a7bff', delay: 0.05 },
+  { left: '64%', color: '#5f8bff', delay: 0.22 },
+  { left: '78%', color: '#7db7ff', delay: 0.15 },
+  { left: '90%', color: '#8ad0ff', delay: 0.28 },
+];
+
 const sectionVariants = {
   hidden: { opacity: 0, y: 32 },
   visible: {
@@ -55,6 +65,7 @@ const sectionVariants = {
 
 function App() {
   const [email, setEmail] = useState('');
+  const [nickname, setNickname] = useState('');
   const [status, setStatus] = useState({ type: '', message: '' });
   const [subscribers, setSubscribers] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -171,6 +182,7 @@ function App() {
       const savedToSupabase = Boolean(row) && isSupabaseConfigured;
       setDataSource(savedToSupabase ? 'supabase' : 'local');
       setEmail('');
+      setNickname('');
       setStatus({
         type: 'success',
         message: savedToSupabase
@@ -178,7 +190,7 @@ function App() {
           : '구독이 완료되었습니다. 로컬에 저장되었고 Supabase 연결 후 자동 동기화할 수 있습니다.',
       });
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 1800);
+      setTimeout(() => setShowConfetti(false), 2200);
     } finally {
       setIsSubmitting(false);
     }
@@ -199,118 +211,130 @@ function App() {
           </div>
         </motion.header>
 
-        <main className="space-y-16">
+        <main className="space-y-12">
           <motion.section
-            className="relative overflow-hidden rounded-[32px] border border-[#dce8ff] bg-white px-7 py-10 shadow-[0_20px_60px_rgba(54,112,255,0.12)] md:px-12 md:py-14"
+            className="relative overflow-hidden rounded-[34px] border border-[#d6e6ff] bg-white p-8 shadow-[0_18px_40px_rgba(62,117,255,0.15)] md:p-12"
             initial="hidden"
             animate="visible"
             variants={sectionVariants}
             style={{ y: -parallaxY }}
           >
-            <div className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-[#d6e6ff]" />
-            <div className="pointer-events-none absolute -bottom-12 -left-8 h-40 w-40 rounded-full bg-[#e9d8ff]" />
+            <div className="pointer-events-none absolute -right-14 top-0 h-52 w-52 rounded-full bg-[#d9e6ff]" />
+            <div className="pointer-events-none absolute -bottom-16 left-0 h-48 w-48 rounded-full bg-[#dceeff]" />
             <motion.div
-              className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#d7e4ff] bg-[#f5f8ff] px-4 py-2 text-xs font-medium text-[#3a63ff]"
-              initial={{ opacity: 0, scale: 0.92 }}
+              className="inline-flex items-center gap-2 rounded-full bg-[#edf3ff] px-4 py-2 text-xs font-semibold tracking-wide text-[#2f5eff]"
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ duration: 0.5 }}
             >
               <Sparkles size={14} />
-              2026 Vibe Coding Weekly
+              VIBE LETTER
             </motion.div>
-            <h1 className="max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[#1a2a4a] md:text-6xl">
+
+            <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-tight tracking-tight text-[#18346a] md:text-6xl">
               {heroText.split('').map((char, index) => (
                 <motion.span
                   key={`${char}-${index}`}
                   className="inline-block"
-                  initial={{ opacity: 0, y: 18 }}
+                  initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    delay: 0.03 * index,
-                    duration: 0.52,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+                  transition={{ delay: 0.024 * index, duration: 0.48, ease: [0.22, 1, 0.36, 1] }}
                 >
                   {char === ' ' ? '\u00A0' : char}
                 </motion.span>
               ))}
             </h1>
             <motion.p
-              className="mt-7 max-w-3xl text-lg text-[#4f5f7d]"
+              className="mt-6 max-w-3xl text-lg leading-relaxed text-[#4f6ea6]"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55, duration: 0.7 }}
+              transition={{ delay: 0.45, duration: 0.65 }}
             >
-              Cursor + Opus 4.7로 8주 만에 서비스를 뽑아내는 Vibe Workflow 레시피를 공유합니다.
+              매주 목요일 오전 8시, 바이브 코딩 실전 사례와 워크플로우를 한 장의 메일로 전달합니다.
             </motion.p>
           </motion.section>
 
           <motion.section
-            className="grid gap-5 md:grid-cols-3"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.22 }}
-            variants={{
-              hidden: {},
-              visible: { transition: { staggerChildren: 0.12 } },
-            }}
-          >
-            {leadMagnets.map((item, index) => (
-              <motion.article
-                key={item.title}
-                className="group rounded-3xl border border-[#dce8ff] bg-gradient-to-br from-white via-[#f6f9ff] to-[#eef4ff] p-6 shadow-[0_14px_30px_rgba(66,129,255,0.12)]"
-                variants={sectionVariants}
-                whileHover={{ y: -8, rotate: index % 2 === 0 ? -0.8 : 0.8 }}
-                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
-              >
-                <div className="mb-4 inline-flex rounded-full border border-[#d7e5ff] bg-white p-2 text-[#3664ff]">
-                  <Gift size={16} />
-                </div>
-                <h2 className="text-xl font-semibold tracking-tight text-[#1b2b53]">{item.title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-[#59709f]">{item.description}</p>
-              </motion.article>
-            ))}
-          </motion.section>
-
-          <motion.section
-            className="relative overflow-hidden rounded-[36px] border border-[#ccdcff] bg-gradient-to-r from-[#2f5eff] via-[#3f79ff] to-[#6f63ff] p-8 text-white shadow-[0_24px_60px_rgba(53,100,255,0.35)] md:p-12"
+            className="relative overflow-hidden rounded-[34px] border border-[#bfd4ff] bg-gradient-to-br from-[#2962ff] via-[#3a80ff] to-[#5871ff] p-8 text-white shadow-[0_28px_60px_rgba(44,106,255,0.38)] md:p-12"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={sectionVariants}
           >
-            <div className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-white/20" />
-            <div className="pointer-events-none absolute -bottom-24 -left-14 h-64 w-64 rounded-full bg-[#8a7bff]/40" />
-            <div className="relative z-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="pointer-events-none absolute -left-14 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-white/20" />
+            <div className="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-[#a7b8ff]/45" />
+
+            <div className="relative z-10 grid gap-8 lg:grid-cols-[1fr_1fr] lg:items-center">
               <div>
-                <p className="text-xs uppercase tracking-[0.24em] text-[#dfe7ff]">Newsletter</p>
-                <h3 className="mt-3 text-3xl font-bold leading-tight tracking-tight md:text-5xl">
-                  지금 바로 이메일 등록하고
-                  <br />
-                  다음 뉴스레터를 받아보세요
-                </h3>
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-[#e9eeff]">
-                  실전 프롬프트, 코드 구조, 시행착오를 매주 한 번 압축해서 보내드립니다.
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#e5ecff]">
+                  Subscription Form
                 </p>
+                <h2 className="mt-4 text-3xl font-bold leading-tight md:text-5xl">
+                  뉴스레터를 받아보실
+                  <br />
+                  이메일을 남겨주세요
+                </h2>
+                <p className="mt-5 text-base leading-relaxed text-[#e8eeff]">
+                  디자인, 빌드, 제품 운영 인사이트를 큐레이션해서 보내드립니다.
+                </p>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                  {leadMagnets.map((item) => (
+                    <motion.div
+                      key={item.title}
+                      className="rounded-2xl border border-white/35 bg-white/20 px-4 py-3 text-sm backdrop-blur-sm"
+                      whileHover={{ y: -3, scale: 1.01 }}
+                      transition={{ type: 'spring', stiffness: 280, damping: 20 }}
+                    >
+                      <div className="mb-2 inline-flex rounded-full bg-white/30 p-1.5">
+                        <Gift size={14} />
+                      </div>
+                      <p className="font-semibold">{item.title}</p>
+                      <p className="mt-1 text-xs text-[#e8eeff]">{item.description}</p>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
 
               <motion.form
                 onSubmit={handleSubscribe}
-                className="rounded-3xl border border-white/35 bg-white/20 p-4 backdrop-blur-sm md:p-5"
+                className="rounded-3xl border border-white/40 bg-white/18 p-4 backdrop-blur-md md:p-6"
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
+                <label className="mb-2 block text-sm font-semibold text-white/95">구독자 닉네임</label>
                 <motion.div
                   className="rounded-2xl border border-transparent bg-white p-1"
                   animate={{
                     boxShadow: isInputFocused
-                      ? '0 0 0 8px rgba(255,255,255,0.35)'
+                      ? '0 0 0 8px rgba(255,255,255,0.30)'
                       : '0 0 0 0 rgba(255,255,255,0)',
                   }}
-                  transition={{ duration: 0.28 }}
+                  transition={{ duration: 0.24 }}
                 >
-                  <div className="flex items-center gap-3 rounded-xl border border-[#d8e3ff] bg-white px-4 py-4">
+                  <input
+                    type="text"
+                    value={nickname}
+                    onChange={(event) => setNickname(event.target.value)}
+                    onFocus={() => setIsInputFocused(true)}
+                    onBlur={() => setIsInputFocused(false)}
+                    placeholder="예: 바이브러버"
+                    className="w-full rounded-xl border border-[#d7e3ff] px-4 py-3 text-base font-medium text-[#244079] outline-none placeholder:text-[#8ca2d3]"
+                  />
+                </motion.div>
+
+                <label className="mb-2 mt-4 block text-sm font-semibold text-white/95">이메일 주소</label>
+                <motion.div
+                  className="rounded-2xl border border-transparent bg-white p-1"
+                  animate={{
+                    boxShadow: isInputFocused
+                      ? '0 0 0 8px rgba(255,255,255,0.30)'
+                      : '0 0 0 0 rgba(255,255,255,0)',
+                  }}
+                  transition={{ duration: 0.24 }}
+                >
+                  <div className="flex items-center gap-3 rounded-xl border border-[#d7e3ff] bg-white px-4 py-3">
                     <Mail size={20} className="text-[#4f77ff]" />
                     <input
                       type="email"
@@ -319,7 +343,7 @@ function App() {
                       onFocus={() => setIsInputFocused(true)}
                       onBlur={() => setIsInputFocused(false)}
                       placeholder="you@company.com"
-                      className="w-full bg-transparent text-base font-medium text-[#22345f] outline-none placeholder:text-[#95a7d6]"
+                      className="w-full bg-transparent text-base font-medium text-[#244079] outline-none placeholder:text-[#8ca2d3]"
                       autoComplete="email"
                       required
                     />
@@ -331,7 +355,7 @@ function App() {
                   disabled={isSubmitting}
                   whileHover={{ y: -2, scale: 1.01 }}
                   whileTap={{ scale: 0.98 }}
-                  className="mt-3 w-full rounded-2xl bg-[#13254d] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_24px_rgba(8,22,52,0.35)] disabled:cursor-not-allowed disabled:bg-[#6f7da3]"
+                  className="mt-4 w-full rounded-2xl bg-[#13254d] px-8 py-4 text-base font-semibold text-white shadow-[0_12px_24px_rgba(8,22,52,0.38)] disabled:cursor-not-allowed disabled:bg-[#6f7da3]"
                 >
                   {isSubmitting ? '구독 중...' : '구독하기'}
                 </motion.button>
@@ -346,23 +370,39 @@ function App() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  {[...Array(16)].map((_, index) => (
+                  {[...Array(22)].map((_, index) => (
                     <motion.span
                       // eslint-disable-next-line react/no-array-index-key
-                      key={`confetti-${index}`}
+                      key={`firework-${index}`}
                       className="absolute left-1/2 top-1/2 h-2.5 w-2.5 rounded-full"
-                      style={{
-                        backgroundColor: ['#ffffff', '#c8d8ff', '#96b5ff', '#ffd6f4'][index % 4],
-                      }}
+                      style={{ backgroundColor: ['#ffffff', '#c7d9ff', '#8ec4ff', '#ffd5f5'][index % 4] }}
                       initial={{ x: 0, y: 0, opacity: 1, scale: 1 }}
                       animate={{
-                        x: Math.cos((index / 16) * Math.PI * 2) * 180,
-                        y: Math.sin((index / 16) * Math.PI * 2) * 140,
+                        x: Math.cos((index / 22) * Math.PI * 2) * 210,
+                        y: Math.sin((index / 22) * Math.PI * 2) * 160,
                         opacity: 0,
-                        scale: 0.25,
+                        scale: 0.2,
                       }}
-                      transition={{ duration: 0.9, ease: 'easeOut' }}
+                      transition={{ duration: 0.95, ease: 'easeOut' }}
                     />
+                  ))}
+
+                  {balloonTracks.map((balloon) => (
+                    <motion.div
+                      key={balloon.left}
+                      className="absolute bottom-[-80px]"
+                      style={{ left: balloon.left }}
+                      initial={{ y: 0, opacity: 0 }}
+                      animate={{ y: -420, opacity: [0, 1, 1, 0] }}
+                      transition={{ duration: 2.1, delay: balloon.delay, ease: 'easeOut' }}
+                    >
+                      <div
+                        className="relative h-14 w-11 rounded-[999px]"
+                        style={{ backgroundColor: balloon.color }}
+                      >
+                        <span className="absolute left-1/2 top-[56px] h-10 w-[1.5px] -translate-x-1/2 bg-white/85" />
+                      </div>
+                    </motion.div>
                   ))}
                 </motion.div>
               )}
@@ -370,7 +410,7 @@ function App() {
 
             {status.message && (
               <p
-                className={`mt-4 text-sm font-medium ${
+                className={`mt-4 text-sm font-semibold ${
                   status.type === 'success' ? 'text-[#e9ffef]' : 'text-[#ffe6ea]'
                 }`}
               >
